@@ -10,8 +10,6 @@ type TCardBackgroundProps = {
 }
 
 export const CardBackground = function CardBackground({
-  tint = '#CCCCCC',
-  radius = 25,
   width,
   height
 }: TCardBackgroundProps) {
@@ -19,30 +17,12 @@ export const CardBackground = function CardBackground({
     canvas => {
       const paint = Skia.Paint()
 
-      const rrct = {
-        rect: {
-          x: 0,
-          y: 0,
-          width: width,
-          height: height
-        },
-        topLeft: { x: radius, y: radius },
-        topRight: { x: radius, y: radius },
-        bottomRight: {
-          x: radius,
-          y: radius
-        },
-        bottomLeft: {
-          x: radius,
-          y: radius
-        }
-      }
-
-      canvas.drawRRect(rrct, paint)
-    },
-    {
-      width,
-      height
+      canvas.drawRect({
+        x: 0,
+        y: 0,
+        width,
+        height
+      }, paint)
     }
   )
 
@@ -56,15 +36,13 @@ export const CardBackground = function CardBackground({
         }
       ]}
     >
-      {picture && <Picture picture={picture} />}
+     <Picture picture={picture} />
     </Canvas>
   )
 }
 
 const style = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    overflow: 'hidden',
     backgroundColor: 'teal',
     padding: 20
   }
