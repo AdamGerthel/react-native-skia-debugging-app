@@ -38,7 +38,6 @@ export const CardBackground = function CardBackground({
         }
       }
 
-      // Center piece
       canvas.drawRRect(rrct, paint)
     },
     {
