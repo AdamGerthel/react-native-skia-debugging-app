@@ -7,7 +7,7 @@ export default function App() {
   const [showIcon, setShowIcon] = useState(true)
 
   const toggleShowIcon = () => {
-    setShowIcon(!!!showIcon)
+    setShowIcon(!showIcon)
   }
 
   return (
