@@ -1,41 +1,25 @@
 import React, { useState } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View, TouchableOpacity, Dimensions } from 'react-native'
-import { CardBackground } from './src/components/CardBackground'
-
-const deviceWidth = Dimensions.get('window').width
+import { Icon } from './src/components/Icon'
 
 export default function App() {
-  const [dimensions, setDimensions] = useState({
-    width: 250,
-    height: 250
-  })
+  const [showIcon, setShowIcon] = useState(true)
 
-  const resizeRandomly = () => {
-    setDimensions({
-      width: Math.floor(Math.min(Math.random() * 200 + 100, deviceWidth - 20)),
-      height: Math.floor(Math.min(Math.random() * 200 + 100, 300))
-    })
+  const toggleShowIcon = () => {
+    setShowIcon(!!!showIcon)
   }
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
       <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={resizeRandomly} style={styles.button}>
-          <Text style={styles.buttonLabel}>Resize</Text>
+        <TouchableOpacity onPress={toggleShowIcon} style={styles.button}>
+          <Text style={styles.buttonLabel}>{showIcon ? 'Hide icon' : 'Show icon'}</Text>
         </TouchableOpacity>
-        <Text>
-          Canvas size: {dimensions.width}x{dimensions.height}
-        </Text>
       </View>
       <View style={styles.cardContainer}>
-        <CardBackground
-          tint="#D77846"
-          width={dimensions.width}
-          height={dimensions.height}
-          radius={25}
-        />
+        {showIcon && <Icon width={50} height={50} fill='#0271EF' />}
       </View>
     </View>
   )
@@ -54,7 +38,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: 'gray',
     color: 'white',
     padding: 10,
     borderRadius: 5,
