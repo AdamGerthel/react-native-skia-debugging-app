@@ -19,7 +19,7 @@ export default function App() {
         </TouchableOpacity>
       </View>
       <View style={styles.cardContainer}>
-        {showIcon && <Icon width={50} height={50} fill='#0271EF' />}
+        {showIcon && <Icon width={50} height={50} />}
       </View>
     </View>
   )
