@@ -1,13 +1,11 @@
-import React, { memo, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import type { StyleProp, ViewStyle } from 'react-native'
 import {
   Canvas,
   Group,
   Skia,
-  type SkSVG,
   fitbox,
   rect,
-  BlendMode,
   ImageSVG
 } from '@shopify/react-native-skia'
 
@@ -28,7 +26,7 @@ export type TIconProps = {
   style?: StyleProp<ViewStyle>
 }
 
-export const Icon = memo(function Icon({
+export const Icon = function({
   style,
   height,
   width
@@ -51,4 +49,4 @@ export const Icon = memo(function Icon({
       </Group>
     </Canvas>
   )
-})
+}
